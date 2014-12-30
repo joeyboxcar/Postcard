@@ -12,10 +12,12 @@ class ViewController: UIViewController {
     
     // Set up our IBOutlets
 
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var enterNameField: UITextField!
     @IBOutlet weak var enterMessageField: UITextField!
     @IBOutlet weak var mailButton: UIButton!
+    @IBOutlet weak var introLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +30,21 @@ class ViewController: UIViewController {
     }
 
     @IBAction func sendMailButtonPressed(sender: UIButton) {
+        introLabel.hidden = false
+        
         messageLabel.hidden = false
         messageLabel.text = enterMessageField.text
+        
+        nameLabel.hidden = false
+        nameLabel.text = enterNameField.text
         
         enterMessageField.text = ""
         enterMessageField.resignFirstResponder()
         
-        mailButton.setTitle("Mail Sent", forState: UIControlState.Normal)
+        enterNameField.text = ""
+        enterNameField.resignFirstResponder()
+        
+        mailButton.setTitle("Message Updated", forState: UIControlState.Normal)
     }
 
 }
